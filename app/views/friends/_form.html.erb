@@ -13,6 +13,10 @@
 
 <div class="form">
   <div class="field form-group mb-3">
+    <%= form.text_field :user_id, id: :friend_user_id, class:"form-control", value: current_user.id, type: :hidden %>
+  </div>
+
+  <div class="field form-group mb-3">
     <%= form.text_field :first_name, class:"form-control", placeholder:"First Name" %>
   </div>
 

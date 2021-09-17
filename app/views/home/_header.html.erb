@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     
-    <%= link_to "Friend App", root_path, class: "navbar-brand" %>
+    <%= link_to "Friends", root_path, class: "navbar-brand" %>
     <%# <a class="navbar-brand" href="#">Friends App</a> %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,14 +13,39 @@
             <%= link_to "About", home_about_path, class: "nav-link" %>
           <%# <a class="nav-link" href="#">Link</a> %>
         </li>
-        <li class="nav-item">
-            <%= link_to "Friends", friends_path, class: "nav-link" %>
-          <%# <a class="nav-link" href="#">Link</a> %>
-        </li>
-        <li class="nav-item">
-            <%= link_to "New Friend", new_friend_path, class: "nav-link" %>
-          <%# <a class="nav-link" href="#">Link</a> %>
-        </li>
+
+        <% if user_signed_in? %>
+
+          <li class="nav-item">
+              <%= link_to "Friends", friends_path, class: "nav-link" %>
+            <%# <a class="nav-link" href="#">Link</a> %>
+          </li>
+          <li class="nav-item">
+              <%= link_to "New Friend", new_friend_path, class: "nav-link" %>
+            <%# <a class="nav-link" href="#">Link</a> %>
+          </li>
+          <li class="nav-item">
+              <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+            <%# <a class="nav-link" href="#">Link</a> %>
+          </li>
+          <li class="nav-item">
+              <%= link_to "Edit Profile", edit_user_registration_path, class: "nav-link" %>
+            <%# <a class="nav-link" href="#">Link</a> %>
+          </li>
+        
+        <% else %>
+        
+          <li class="nav-item">
+              <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+            <%# <a class="nav-link" href="#">Link</a> %>
+          </li>
+          <li class="nav-item">
+              <%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
+            <%# <a class="nav-link" href="#">Link</a> %>
+          </li>
+
+        <% end %>
+
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
